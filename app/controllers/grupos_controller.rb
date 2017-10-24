@@ -14,6 +14,7 @@ class GruposController < ApplicationController
 
   # GET /grupos/new
   def new
+    @clase = Clase.find(params[:clase_id])
     @grupo = Grupo.new
   end
 
@@ -24,15 +25,17 @@ class GruposController < ApplicationController
   # POST /grupos
   # POST /grupos.json
   def create
+    @clase = Clase.find(params[:clase_id])
     @grupo = Grupo.new(grupo_params)
+    @grupo.clase = @clase
 
     respond_to do |format|
       if @grupo.save
-        format.html { redirect_to @grupo, notice: 'Grupo was successfully created.' }
-        format.json { render :show, status: :created, location: @grupo }
+        format.html { redirect_to @clase, notice: 'Grupo was successfully created.' }
+        format.json { render :show, status: :created, location: @clase }
       else
         format.html { render :new }
-        format.json { render json: @grupo.errors, status: :unprocessable_entity }
+        format.json { render json: @clase.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,9 +57,10 @@ class GruposController < ApplicationController
   # DELETE /grupos/1
   # DELETE /grupos/1.json
   def destroy
+    @clase = @grupo.clase
     @grupo.destroy
     respond_to do |format|
-      format.html { redirect_to grupos_url, notice: 'Grupo was successfully destroyed.' }
+      format.html { redirect_to clase_grupos_url(@clase), notice: 'Grupo was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

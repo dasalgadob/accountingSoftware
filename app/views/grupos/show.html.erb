@@ -12,8 +12,8 @@
 
 <p>
   <strong>Clase:</strong>
-  <%= @grupo.clase %>
+  <%= @grupo.clase.number %>
 </p>
 
 <%= link_to 'Edit', edit_grupo_path(@grupo) %> |
-<%= link_to 'Back', grupos_path %>
+

@@ -3,24 +3,25 @@ require 'test_helper'
 class GruposControllerTest < ActionDispatch::IntegrationTest
   setup do
     @grupo = grupos(:one)
+    @clase = clases(:one)
   end
 
   test "should get index" do
-    get grupos_url
+    get clase_grupos_url(@clase)
     assert_response :success
   end
 
   test "should get new" do
-    get new_grupo_url
+    get new_clase_grupo_url(@clase)
     assert_response :success
   end
 
   test "should create grupo" do
     assert_difference('Grupo.count') do
-      post grupos_url, params: { grupo: { clase_id: @grupo.clase_id, name: @grupo.name, number: @grupo.number } }
+      post clase_grupos_url(@clase), params: { grupo: {  name: @grupo.name, number: @grupo.number }  }
     end
 
-    assert_redirected_to grupo_url(Grupo.last)
+    assert_redirected_to clase_url(@clase)
   end
 
   test "should show grupo" do
@@ -39,10 +40,11 @@ class GruposControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy grupo" do
+    @clase= @grupo.clase
     assert_difference('Grupo.count', -1) do
       delete grupo_url(@grupo)
     end
 
-    assert_redirected_to grupos_url
+    assert_redirected_to clase_grupos_url(@clase)
   end
 end

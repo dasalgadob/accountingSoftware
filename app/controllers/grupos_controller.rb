@@ -4,7 +4,8 @@ class GruposController < ApplicationController
   # GET /grupos
   # GET /grupos.json
   def index
-    @grupos = Grupo.all
+    #@clase = Clase.find(params[:clase_id])
+    @grupos = Grupo.where( "clase_id = ?", params[:clase_id])
   end
 
   # GET /grupos/1

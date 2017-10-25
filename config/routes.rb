@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'static_pages/home'
+
+  get 'static_pages/help'
+
   resources :clases do
     resources :grupos, shallow: true
   end

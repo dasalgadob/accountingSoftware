@@ -32,7 +32,7 @@ class GruposController < ApplicationController
 
     respond_to do |format|
       if @grupo.save
-        format.html { redirect_to @clase, notice: 'Grupo was successfully created.' }
+        format.html { redirect_to clase_path(@grupo.clase), notice: 'Grupo was successfully created.' }
         format.json { render :show, status: :created, location: @clase }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class GruposController < ApplicationController
   def update
     respond_to do |format|
       if @grupo.update(grupo_params)
-        format.html { redirect_to @grupo, notice: 'Grupo was successfully updated.' }
+        format.html { redirect_to clase_path(@grupo.clase), notice: 'Grupo was successfully updated.' }
         format.json { render :show, status: :ok, location: @grupo }
       else
         format.html { render :edit }

@@ -14,5 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//code to enable input fields to modifiy in a list
 
+function activateSaveButton(edit) {
+    //console.log("entro");
+    //console.log("jquery"+$(edit).id);  undefined
+    //console.log("js"+edit.id);  right answer
+    var id= edit.id;
+    $('#guardar'+edit.id).css('display','inline');
+    //enable input fields
+    $('#number'+id).prop("disabled", false);
+    $('#name'+id).prop("disabled", false);
+}
 //= require_tree .

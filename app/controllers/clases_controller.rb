@@ -10,6 +10,7 @@ class ClasesController < ApplicationController
   # GET /clases/1
   # GET /clases/1.json
   def show
+    @grupos =@clase.grupos
   end
 
   # GET /clases/new
@@ -42,7 +43,7 @@ class ClasesController < ApplicationController
   def update
     respond_to do |format|
       if @clase.update(clase_params)
-        format.html { redirect_to @clase, notice: 'Clase was successfully updated.' }
+        format.html { redirect_to clases_path, notice: "Clase #{@clase.name} fue modificada exitosamente." }
         format.json { render :show, status: :ok, location: @clase }
       else
         format.html { render :edit }

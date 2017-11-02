@@ -3,6 +3,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* To avoid the fixed-menu of overlapping with other content */
 body {
   padding-top: 60px;
 }
@@ -12,6 +13,7 @@ footer {
 }
 */
 
+/*When list of objects is shown hide the save button */
 .save-button-list{
   display: none;
 }

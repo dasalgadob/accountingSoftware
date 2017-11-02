@@ -1,27 +1,3 @@
-<%= form_for(clase) do |f| %>
-  <% if  clase.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(clase.errors.count, "error") %> prohibited this clase from being saved:</h2>
-
-      <ul>
-      <% clase.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :number %>
-    <%= f.number_field :number, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-
-  <div class="form-group actions">
-    <%= f.submit class: 'btn btn-success'%>
-  </div>
+<%= form_for(@clase) do |f| %>
+    <%= render 'form_content', f: f %>
 <% end %>

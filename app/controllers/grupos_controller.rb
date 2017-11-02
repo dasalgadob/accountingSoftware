@@ -61,7 +61,7 @@ class GruposController < ApplicationController
     @clase = @grupo.clase
     @grupo.destroy
     respond_to do |format|
-      format.html { redirect_to clase_grupos_url(@clase), notice: 'Grupo was successfully destroyed.' }
+      format.html { redirect_to clase_url(@clase), notice: 'Grupo was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

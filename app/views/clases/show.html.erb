@@ -60,5 +60,8 @@
 
   </tbody>
 </table>
-<%= link_to 'Agregar grupo', new_clase_grupo_path(@clase) %> |
+<%= link_to 'Agregar grupo', new_clase_grupo_path(@clase), remote: true %> |
 <%= link_to 'Volver', clases_path %>
+
+
+<div id="grupo-form"></div>

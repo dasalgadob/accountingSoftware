@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Grupo:</strong>
+  <%= @cuentum.grupo.number %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @cuentum.number %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cuentum.name %>
+</p>
+
+<%= link_to 'Edit', edit_cuentum_path(@cuentum) %> |
+<%= link_to 'Back', grupo_cuenta_path(@grupo) %>

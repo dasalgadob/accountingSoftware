@@ -12,7 +12,7 @@
 
 <p>
   <strong>Clase:</strong>
-  <%= @grupo.clase.number %>
+  <%= @grupo.clase.name %>
 </p>
 
 <h4>Cuentas</h4>
@@ -27,17 +27,17 @@
   <tbody>
   <% @cuentas.each do |cuenta|  %>
       <tr class="row">
-        <form action="<%=cuentum_path(cuenta) %>" method="post">
+        <form action="<%=account_path(cuenta) %>" method="post">
           <input type="hidden" name="_method" value="patch" />
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
 
           <div class="input-group ">
             <td class="col-sm-1">
-              <input type="number" name="cuentum[number]" value="<%= cuenta.number %>" class="form-control input-sm" id="number<%=cuenta.id%>" disabled >
+              <input type="number" name="account[number]" value="<%= cuenta.number %>" class="form-control input-sm" id="number<%=cuenta.id%>" disabled >
             </td>
             <td class="col-sm-3">
-              <input type="text" name="cuentum[name]" value="<%= cuenta.name %>" class="form-control" id="name<%=cuenta.id%>" disabled>
+              <input type="text" name="account[name]" value="<%= cuenta.name %>" class="form-control" id="name<%=cuenta.id%>" disabled>
             </td>
             <td class="col-sm-1">
               <button type="submit" class="btn btn-success save-button-list" id="guardar<%=cuenta.id%>">Guardar</button>
@@ -66,9 +66,9 @@
   </tbody>
 </table>
 
-<%= link_to 'Agregar cuenta', new_grupo_cuentum_path(@grupo), remote: true%> <br>
+<%= link_to 'Agregar cuenta', new_grupo_account_path(@grupo), remote: true%> <br>
 <%= link_to 'Edit', edit_grupo_path(@grupo) %> |
 
 <br>
 
-<div id="cuenta-form"></div>
+<div id="account-form"></div>

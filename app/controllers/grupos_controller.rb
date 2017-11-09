@@ -11,7 +11,7 @@ class GruposController < ApplicationController
   # GET /grupos/1
   # GET /grupos/1.json
   def show
-    @cuentas = @grupo.cuentums
+    @cuentas = @grupo.accounts
   end
 
   # GET /grupos/new

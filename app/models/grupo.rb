@@ -1,4 +1,4 @@
 class Grupo < ApplicationRecord
   belongs_to :clase
-  has_many :cuentums
+  has_many :accounts
 end

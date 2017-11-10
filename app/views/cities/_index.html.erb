@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Cities</h2>
+
+<table class="table-hover table">
+  <thead>
+    <tr class="row">
+      <th class="col-sm-1">Code</th>
+      <th class="col-sm-2">Name</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cities.each do |city| %>
+      <tr class="row">
+        <td class="col-sm-1"><%= city.code %></td>
+        <td class="col-sm-2"><%= city.name %></td>
+        <td class="col-sm-1"><%= link_to 'Ver', city %></td>
+        <td class="col-sm-1"><%= link_to edit_city_path(city),role: "button", class: "btn btn-info edit-button-list" do %>
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
+        <% end %>
+        </td>
+        <td class="col-sm-1"><%= link_to  city, role: 'button' ,class: 'btn btn-danger', method: :delete, data: { confirm: 'Estas seguro?' } do %>
+              <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Borrar
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New City', new_state_city_path(@state) %>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h2>States</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr class="row">
+      <th class="col-sm-1">Code</th>
+      <th class="col-sm-2">Name</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @states.each do |state| %>
+      <tr class="row">
+        <td class="col-sm-1"><%= state.code %></td>
+        <td class="col-sm-2"><%= state.name %></td>
+        <td class="col-sm-1"><%= link_to 'Ver', state %></td>
+        <td class="col-sm-1"><%= link_to edit_state_path(state),role: "button", class: "btn btn-info edit-button-list" do%>
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
+        <%end %>
+        </td>
+        <td class="col-sm-1"><%= link_to  state,role: 'button' ,class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } do%>
+              <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Borrar
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New State', new_country_state_path(@country) %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108214125) do
+ActiveRecord::Schema.define(version: 20171109195226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,8 +33,24 @@ ActiveRecord::Schema.define(version: 20171108214125) do
     t.index ["subaccount_id"], name: "index_auxiliars_on_subaccount_id", using: :btree
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.integer  "state_id"
+    t.integer  "code"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["state_id"], name: "index_cities_on_state_id", using: :btree
+  end
+
   create_table "clases", force: :cascade do |t|
     t.integer  "number"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.integer  "code"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,6 +65,15 @@ ActiveRecord::Schema.define(version: 20171108214125) do
     t.index ["clase_id"], name: "index_grupos_on_clase_id", using: :btree
   end
 
+  create_table "states", force: :cascade do |t|
+    t.integer  "country_id"
+    t.integer  "code"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_states_on_country_id", using: :btree
+  end
+
   create_table "subaccounts", force: :cascade do |t|
     t.integer  "account_id"
     t.integer  "number"
@@ -60,6 +85,8 @@ ActiveRecord::Schema.define(version: 20171108214125) do
 
   add_foreign_key "accounts", "grupos"
   add_foreign_key "auxiliars", "subaccounts"
+  add_foreign_key "cities", "states"
   add_foreign_key "grupos", "clases"
+  add_foreign_key "states", "countries"
   add_foreign_key "subaccounts", "accounts"
 end

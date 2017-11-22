@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Document type:</strong>
+  <%= @person.document_type %>
+</p>
+
+<p>
+  <strong>Document number:</strong>
+  <%= @person.document_number %>
+</p>
+
+<p>
+  <strong>Verification digit:</strong>
+  <%= @person.verification_digit %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @person.first_name %>
+</p>
+
+<p>
+  <strong>Middle name:</strong>
+  <%= @person.middle_name %>
+</p>
+
+<p>
+  <strong>Surname:</strong>
+  <%= @person.surname %>
+</p>
+
+<p>
+  <strong>Second surname:</strong>
+  <%= @person.second_surname %>
+</p>
+
+<p>
+  <strong>Business name:</strong>
+  <%= @person.business_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @person.email %>
+</p>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

@@ -5,12 +5,14 @@ Rails.application.routes.draw do
 
 
 
+  resources :people
+  resources :document_types
   resources :countries do
     resources :states, shallow: true do
       resources :cities, shallow: true
     end
   end
-  get 'users/new'
+  #get 'users/new'
 
   get '/home', to: 'static_pages#home'
 

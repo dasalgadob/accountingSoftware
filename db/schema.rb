@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109195226) do
+ActiveRecord::Schema.define(version: 20171110223325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,13 @@ ActiveRecord::Schema.define(version: 20171109195226) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "document_types", force: :cascade do |t|
+    t.string   "abbreviation"
+    t.string   "name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "grupos", force: :cascade do |t|
     t.integer  "number"
     t.string   "name"
@@ -63,6 +70,21 @@ ActiveRecord::Schema.define(version: 20171109195226) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["clase_id"], name: "index_grupos_on_clase_id", using: :btree
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.integer  "document_type_id"
+    t.bigint   "document_number"
+    t.integer  "verification_digit"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "surname"
+    t.string   "second_surname"
+    t.string   "business_name"
+    t.string   "email"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["document_type_id"], name: "index_people_on_document_type_id", using: :btree
   end
 
   create_table "states", force: :cascade do |t|
@@ -87,6 +109,7 @@ ActiveRecord::Schema.define(version: 20171109195226) do
   add_foreign_key "auxiliars", "subaccounts"
   add_foreign_key "cities", "states"
   add_foreign_key "grupos", "clases"
+  add_foreign_key "people", "document_types"
   add_foreign_key "states", "countries"
   add_foreign_key "subaccounts", "accounts"
 end

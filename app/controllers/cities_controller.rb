@@ -1,4 +1,5 @@
 class CitiesController < ApplicationController
+  #autocomplete :city, :name
   before_action :set_city, only: [:show, :edit, :update, :destroy]
 
   # GET /cities

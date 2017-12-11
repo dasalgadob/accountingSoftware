@@ -1,4 +1,4 @@
-<%= form_for(person)  do |f| %>
+<%= form_for(person)   do |f| %>
   <% if person.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
@@ -12,52 +12,88 @@
   <% end %>
 
   <div class="form-group col-sm-6">
-    <%= f.label :document_type_id, class: '' %>
+    <%= f.label :document_type_id, 'Tipo de documento', class: '' %>
     <%= f.select :document_type_id, options_for_select(@document_types.map{ |dt| [dt.abbreviation, dt.id]}),{ :include_blank => false },{ class: 'form-control'} %>
   </div>
 
   <div class="form-group col-sm-6">
-    <%= f.label :document_number, class: '' %>
+    <%= f.label :document_number,'Numero de documento', class: '' %>
     <%= f.text_field :document_number, class: 'form-control' %>
   </div>
 
   <div class="form-group col-sm-6">
-    <%= f.label :verification_digit %>
+    <%= f.label :verification_digit,'Digito de verificación' %>
     <%= f.number_field :verification_digit, class: 'form-control' %>
   </div>
 
   <div class="form-group col-sm-6">
-    <%= f.label :first_name %>
+    <%= f.label :first_name, 'Primer nombre' %>
     <%= f.text_field :first_name, class: 'form-control' %>
   </div>
 
   <div class="form-group col-sm-6">
-    <%= f.label :middle_name %>
+    <%= f.label :middle_name, 'Otros nombres' %>
     <%= f.text_field :middle_name, class: 'form-control' %>
   </div>
 
   <div class="form-group col-sm-6">
-    <%= f.label :surname %>
+    <%= f.label :surname, 'Primer apellido' %>
     <%= f.text_field :surname, class: 'form-control' %>
   </div>
 
   <div class="form-group col-sm-6">
-    <%= f.label :second_surname %>
+    <%= f.label :second_surname, 'Segundo apellido' %>
     <%= f.text_field :second_surname, class: 'form-control' %>
   </div>
 
   <div class="form-group col-sm-6">
-    <%= f.label :business_name %>
+    <%= f.label :business_name, 'Razón social' %>
     <%= f.text_field :business_name, class: 'form-control' %>
   </div>
   <div class="row">
   <div class="form-group col-sm-6 ">
     <%= f.label :email %>
-    <%= f.text_field :email, class: 'form-control' %>
+    <%= f.email_field :email, class: 'form-control' %>
   </div>
   </div>
 
+  <fieldset class="form-group">
+    <legend> Ubicación</legend>
+
+      <div class="form-group col-sm-6" >
+        <%= label_tag 'Ciudad', 'Ciudad', for: 'id_city' %>
+        <%= autocomplete_field_tag 'city', '', people_autocomplete_city_name_path,class: 'form-control' , update_elements: {id: '#id_city'}%>
+        <%= hidden_field_tag 'id_city' %>
+      </div>
+      <div class="form-group col-sm-6" >
+        <%= label_tag 'Direccion' ,'Direccion', for: 'address' %>
+        <%= text_field_tag(:address, '', class: 'form-control col-sm-6') %>
+      </div>
+
+
+
+  </fieldset>
+
+    <fieldset class="form-group">
+      <legend> Telefono</legend>
+
+      <div class="form-group" >
+        <div class=" col-sm-6" >
+          <%= select_tag(:number_type,options_for_select([['Celular','celular'], ['Casa', 'casa'], ['Trabajo', 'trabajo'], ['Otro', 'otro']]) , class: 'form-control col-sm-6') %>
+        </div>
+
+        <div class=" col-sm-6" >
+          <%= number_field_tag :phone_number, '', class: 'form-control col-sm-6' %>
+        </div>
+      </div>
+
+
+
+    </fieldset>
+
+
+
   <div class="actions">
-    <%= f.submit class: ' btn btn-success' %>
+    <%= f.submit locals[:submit_string],class: ' btn btn-success' %>
   </div>
 <% end %>

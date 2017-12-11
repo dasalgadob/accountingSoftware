@@ -52,3 +52,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 gem 'bootstrap-sass'
+
+gem 'will_paginate'
+
+gem 'jquery-ui-rails'
+
+#gem 'rails4-autocomplete'
+gem 'rails-jquery-autocomplete'

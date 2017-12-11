@@ -28,7 +28,7 @@ class DocumentTypesController < ApplicationController
 
     respond_to do |format|
       if @document_type.save
-        format.html { redirect_to @document_type, notice: 'Document type was successfully created.' }
+        format.html { redirect_to @document_type, notice: 'Tipo de documento fue creado exitosamente.' }
         format.json { render :show, status: :created, location: @document_type }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class DocumentTypesController < ApplicationController
   def update
     respond_to do |format|
       if @document_type.update(document_type_params)
-        format.html { redirect_to @document_type, notice: 'Document type was successfully updated.' }
+        format.html { redirect_to @document_type, notice: 'Tipo de documento fue actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @document_type }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class DocumentTypesController < ApplicationController
   def destroy
     @document_type.destroy
     respond_to do |format|
-      format.html { redirect_to document_types_url, notice: 'Document type was successfully destroyed.' }
+      format.html { redirect_to document_types_url, notice: 'Tipo de documento fue eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class DocumentTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_type_params
-      params.require(:document_type).permit(:abbreviation, :name)
+      params.require(:document_type).permit(:abbreviation, :name, :code)
     end
 end

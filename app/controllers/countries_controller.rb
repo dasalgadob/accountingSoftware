@@ -1,16 +1,19 @@
 class CountriesController < ApplicationController
+  autocomplete :country, :name, extra_data: [:id, :created_at, :code] #, display_value: :full_result
+
   before_action :set_country, only: [:show, :edit, :update, :destroy]
+
 
   # GET /countries
   # GET /countries.json
   def index
-    @countries = Country.all
+    @countries = Country.paginate(page: params[:page])
   end
 
   # GET /countries/1
   # GET /countries/1.json
   def show
-    @states = @country.states
+    @states = @country.states.paginate(page: params[:page])
   end
 
   # GET /countries/new

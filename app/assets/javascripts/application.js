@@ -10,9 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery3
+//= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require jquery-ui/widgets/autocomplete
+//= require autocomplete-rails
+
+
 //code to enable input fields to modifiy in a list
 
 function activateSaveButton(edit) {
@@ -24,5 +28,9 @@ function activateSaveButton(edit) {
     //enable input fields
     $('#number'+id).prop("disabled", false);
     $('#name'+id).prop("disabled", false);
+}
+
+function addClassByClick(button){
+    $('.ui-widget-content').addClass("dropdown-menu")
 }
 //= require_tree .

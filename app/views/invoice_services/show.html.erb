@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Invoice:</strong>
+  <%= @invoice_service.invoice %>
+</p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @invoice_service.service %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @invoice_service.description %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @invoice_service.value %>
+</p>
+
+<p>
+  <strong>Iva:</strong>
+  <%= @invoice_service.iva %>
+</p>
+
+<p>
+  <strong>Withholding tax:</strong>
+  <%= @invoice_service.withholding_tax %>
+</p>
+
+<p>
+  <strong>Withholding tax ica:</strong>
+  <%= @invoice_service.withholding_tax_ica %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_service_path(@invoice_service) %> |
+<%= link_to 'Back', invoice_services_path %>

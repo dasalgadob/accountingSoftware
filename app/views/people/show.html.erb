@@ -1,42 +1,42 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Document type:</strong>
-  <%= @person.document_type %>
+  <strong>Tipo de documento:</strong>
+  <%= @person.document_type.abbreviation %>
 </p>
 
 <p>
-  <strong>Document number:</strong>
+  <strong>Número de documento:</strong>
   <%= @person.document_number %>
 </p>
 
 <p>
-  <strong>Verification digit:</strong>
+  <strong>Digito de verificación:</strong>
   <%= @person.verification_digit %>
 </p>
 
 <p>
-  <strong>First name:</strong>
+  <strong>Primer nombre:</strong>
   <%= @person.first_name %>
 </p>
 
 <p>
-  <strong>Middle name:</strong>
+  <strong>Otros nombres:</strong>
   <%= @person.middle_name %>
 </p>
 
 <p>
-  <strong>Surname:</strong>
+  <strong>Apellido:</strong>
   <%= @person.surname %>
 </p>
 
 <p>
-  <strong>Second surname:</strong>
+  <strong>Segundo apellido:</strong>
   <%= @person.second_surname %>
 </p>
 
 <p>
-  <strong>Business name:</strong>
+  <strong>Razón social:</strong>
   <%= @person.business_name %>
 </p>
 
@@ -45,5 +45,5 @@
   <%= @person.email %>
 </p>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<%= link_to 'Editar', edit_person_path(@person) %> |
+<%= link_to 'Volver', people_path %>

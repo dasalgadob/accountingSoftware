@@ -1,6 +1,6 @@
-<h1>Editing Person</h1>
+<h1>Editar persona</h1>
 
-<%= render 'form', person: @person %>
+<%= render 'form', person: @person, locals: {submit_string: 'Editar'} %>
 
-<%= link_to 'Show', @person %> |
-<%= link_to 'Back', people_path %>
+<%= link_to 'Mostrar', @person %> |
+<%= link_to 'Volver', people_path %>

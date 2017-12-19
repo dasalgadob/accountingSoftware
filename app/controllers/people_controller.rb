@@ -1,10 +1,12 @@
 class PeopleController < ApplicationController
+  autocomplete :city, :name
   before_action :set_person, only: [:show, :edit, :update, :destroy]
+
 
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = Person.all.includes(:document_type)
   end
 
   # GET /people/1
@@ -20,21 +22,38 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
+    @document_types = DocumentType.all
+    @locations = @person.locations
+    @phone_numbers = @person.phone_numbers
   end
 
   # POST /people
   # POST /people.json
   def create
+    puts ('LOG: ' +params[:city])
+    puts ('LOG: ' +params[:address])
     @person = Person.new(person_params)
+
 
     respond_to do |format|
       if @person.save
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
+        @location =Location.new(person_id: @person.id,city_id: params[:id_city], address: params[:address])
+        @location.save
+        @phone_number = PhoneNumber.new(person_id: @person.id, number_type: params[:number_type], number: params[:phone_number] )
+        @phone_number.save
+        puts 'after location create'
+        #if @location.save
+        format.html { redirect_to @person, notice: 'Tercero fue creado exitosamente.' }
         format.json { render :show, status: :created, location: @person }
-      else
-        format.html { render :new }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
-      end
+
+        else
+          format.html { render :new }
+          format.json { render json: @location.errors, status: :unprocessable_entity }
+        end
+      #else
+      #  format.html { render :new }
+      ##  format.json { render json: @person.errors, status: :unprocessable_entity }
+      #end
     end
   end
 
@@ -43,7 +62,7 @@ class PeopleController < ApplicationController
   def update
     respond_to do |format|
       if @person.update(person_params)
-        format.html { redirect_to @person, notice: 'Person was successfully updated.' }
+        format.html { redirect_to @person, notice: 'Tercero fue actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @person }
       else
         format.html { render :edit }
@@ -57,7 +76,7 @@ class PeopleController < ApplicationController
   def destroy
     @person.destroy
     respond_to do |format|
-      format.html { redirect_to people_url, notice: 'Person was successfully destroyed.' }
+      format.html { redirect_to people_url, notice: 'Tercero fue eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end
@@ -72,4 +91,5 @@ class PeopleController < ApplicationController
     def person_params
       params.require(:person).permit(:document_type_id, :document_number, :verification_digit, :first_name, :middle_name, :surname, :second_surname, :business_name, :email)
     end
+
 end

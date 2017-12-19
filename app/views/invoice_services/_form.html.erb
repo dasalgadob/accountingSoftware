@@ -1,0 +1,52 @@
+<%= form_for(invoice_service) do |f| %>
+  <% if invoice_service.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(invoice_service.errors.count, "error") %> prohibited this invoice_service from being saved:</h2>
+
+      <ul>
+      <% invoice_service.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :invoice_id %>
+    <%= f.text_field :invoice_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :service_id %>
+    <%= f.text_field :service_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :value %>
+    <%= f.text_field :value, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :iva %>
+    <%= f.text_field :iva, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :withholding_tax %>
+    <%= f.text_field :withholding_tax, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :withholding_tax_ica %>
+    <%= f.text_field :withholding_tax_ica, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-success' %>
+  </div>
+<% end %>

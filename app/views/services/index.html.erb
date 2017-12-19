@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Services</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Account auxiliar</th>
+      <th>Cost centre</th>
+      <th>Taxable income</th>
+      <th>Account iva</th>
+      <th>Account withholding tax</th>
+      <th>Account withholding tax ica</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @services.each do |service| %>
+      <tr>
+        <td><%= service.name %></td>
+        <td><%= service.account_auxiliar %></td>
+        <td><%= service.cost_centre %></td>
+        <td><%= service.taxable_income %></td>
+        <td><%= service.account_IVA %></td>
+        <td><%= service.account_withholding_tax %></td>
+        <td><%= service.account_withholding_tax_ICA %></td>
+        <td><%= link_to 'Show', service %></td>
+        <td><%= link_to 'Edit', edit_service_path(service) %></td>
+        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Service', new_service_path %>

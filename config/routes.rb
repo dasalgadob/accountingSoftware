@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
-
-
-
-
-
-
-  resources :people
+  resources :users
+  get 'people/autocomplete_city_name'
+  resources :invoice_services
+  resources :invoices
+  resources :services
+  resources :cost_centres
+  resources :people do
+    resources :locations do
+      get :autocomplete_city_name, :on => :collection
+    end
+    resources :phone_numbers
+  end
   resources :document_types
   resources :countries do
+    get :autocomplete_country_name, :on => :collection
     resources :states, shallow: true do
       resources :cities, shallow: true
     end

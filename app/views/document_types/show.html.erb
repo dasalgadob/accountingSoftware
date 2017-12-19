@@ -1,14 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Abbreviation:</strong>
+  <strong>Abreviatura:</strong>
   <%= @document_type.abbreviation %>
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @document_type.name %>
 </p>
 
-<%= link_to 'Edit', edit_document_type_path(@document_type) %> |
-<%= link_to 'Back', document_types_path %>
+<p>
+  <strong>Codigo:</strong>
+  <%= @document_type.code %>
+</p>
+
+<%= link_to 'Editar', edit_document_type_path(@document_type) %> |
+<%= link_to 'Volver', document_types_path %>

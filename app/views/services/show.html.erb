@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @service.name %>
+</p>
+
+<p>
+  <strong>Account auxiliar:</strong>
+  <%= @service.auxiliar.number %>
+</p>
+
+<p>
+  <strong>Cost centre:</strong>
+  <%= @service.cost_centre %>
+</p>
+
+<p>
+  <strong>Taxable income:</strong>
+  <%= @service.taxable_income %>
+</p>
+
+<p>
+  <strong>Account iva:</strong>
+  <%= @service.account_IVA %>
+</p>
+
+<p>
+  <strong>Account withholding tax:</strong>
+  <%= @service.account_withholding_tax %>
+</p>
+
+<p>
+  <strong>Account withholding tax ica:</strong>
+  <%= @service.account_withholding_tax_ICA %>
+</p>
+
+<%= link_to 'Edit', edit_service_path(@service) %> |
+<%= link_to 'Back', services_path %>

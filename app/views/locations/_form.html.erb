@@ -1,4 +1,4 @@
-<%= form_for(location) do |f| %>
+<%= form_for([@person,@location]) do |f| %>
   <% if location.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
@@ -11,22 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :person_id %>
-    <%= f.text_field :person_id %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= f.label :city_id %>
-    <%= f.text_field :city_id %>
+    <%= autocomplete_field_tag 'city', '', autocomplete_city_name_person_locations_path(@person),class: 'form-control' %>
+
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :address %>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions form-group">
+    <%= f.submit class: 'btn btn-success' %>
   </div>
 <% end %>

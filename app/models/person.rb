@@ -1,7 +1,8 @@
 class Person < ApplicationRecord
   belongs_to :document_type
   before_save :uppercase_fields
-  has_many :phone_numbers
+  has_many :phone_numbers, dependent: :delete_all
+  has_many :locations, dependent: :delete_all
 
 
   private

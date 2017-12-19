@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  autocomplete :city, :name
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
   # GET /locations
@@ -14,6 +15,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/new
   def new
+    @person = Person.find(params[:person_id])
     @location = Location.new
   end
 
@@ -24,8 +26,9 @@ class LocationsController < ApplicationController
   # POST /locations
   # POST /locations.json
   def create
+    @person = Person.find(params[:person_id])
     @location = Location.new(location_params)
-
+    @location.person = @person
     respond_to do |format|
       if @location.save
         format.html { redirect_to @location, notice: 'Location was successfully created.' }

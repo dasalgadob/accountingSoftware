@@ -6,7 +6,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = Person.all.includes(:document_type)
   end
 
   # GET /people/1
@@ -23,6 +23,8 @@ class PeopleController < ApplicationController
   # GET /people/1/edit
   def edit
     @document_types = DocumentType.all
+    @locations = @person.locations
+    @phone_numbers = @person.phone_numbers
   end
 
   # POST /people

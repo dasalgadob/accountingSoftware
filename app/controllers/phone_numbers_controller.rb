@@ -14,6 +14,7 @@ class PhoneNumbersController < ApplicationController
 
   # GET /phone_numbers/new
   def new
+    @person = Person.find(params[:person_id])
     @phone_number = PhoneNumber.new
   end
 
@@ -24,11 +25,12 @@ class PhoneNumbersController < ApplicationController
   # POST /phone_numbers
   # POST /phone_numbers.json
   def create
+    @person = Person.find(params[:person_id])
     @phone_number = PhoneNumber.new(phone_number_params)
-
+    @phone_number.person = @person
     respond_to do |format|
       if @phone_number.save
-        format.html { redirect_to @phone_number, notice: 'Phone number was successfully created.' }
+        format.html { redirect_to edit_person_path(@person), notice: 'Phone number was successfully created.' }
         format.json { render :show, status: :created, location: @phone_number }
       else
         format.html { render :new }
@@ -54,9 +56,10 @@ class PhoneNumbersController < ApplicationController
   # DELETE /phone_numbers/1
   # DELETE /phone_numbers/1.json
   def destroy
+    @person = @phone_number.person
     @phone_number.destroy
     respond_to do |format|
-      format.html { redirect_to phone_numbers_url, notice: 'Phone number was successfully destroyed.' }
+      format.html { redirect_to edit_person_path(@person), notice: 'Phone number was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

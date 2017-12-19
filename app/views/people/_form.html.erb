@@ -57,6 +57,10 @@
   </div>
   </div>
 
+
+    <% case locals[:submit_string] %>
+    <% when "Crear"%>
+
   <fieldset class="form-group">
     <legend> Ubicación</legend>
 
@@ -69,7 +73,6 @@
         <%= label_tag 'Direccion' ,'Direccion', for: 'address' %>
         <%= text_field_tag(:address, '', class: 'form-control col-sm-6') %>
       </div>
-
 
 
   </fieldset>
@@ -91,8 +94,13 @@
 
     </fieldset>
 
-
-
+  <% when "Editar"%>
+  <%= render 'locations/index', person: person %>
+  <br>
+  <%= render 'phone_numbers/index', person: person %>
+  <br>
+  <%end %>
+  <br>
   <div class="actions">
     <%= f.submit locals[:submit_string],class: ' btn btn-success' %>
   </div>

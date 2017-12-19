@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171211052455) do
+ActiveRecord::Schema.define(version: 20171219194319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -171,6 +171,15 @@ ActiveRecord::Schema.define(version: 20171211052455) do
     t.index ["account_id"], name: "index_subaccounts_on_account_id", using: :btree
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.integer  "person_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["person_id"], name: "index_users_on_person_id", using: :btree
+  end
+
   add_foreign_key "accounts", "grupos"
   add_foreign_key "auxiliars", "subaccounts"
   add_foreign_key "cities", "states"
@@ -189,4 +198,5 @@ ActiveRecord::Schema.define(version: 20171211052455) do
   add_foreign_key "services", "cost_centres"
   add_foreign_key "states", "countries"
   add_foreign_key "subaccounts", "accounts"
+  add_foreign_key "users", "people"
 end

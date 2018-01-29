@@ -12,37 +12,40 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name %>
+    <%= f.label :name ,'Nombre'%>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :account_auxiliar_id %>
-    <%= f.text_field :auxiliar, class: 'form-control' %>
+    <%= f.label :account_auxiliar_id, 'Cuenta auxiliar' %>
+    <%= autocomplete_field_tag 'city',
+       '', autocomplete_auxiliar_number_services_path,class: 'form-control' , update_elements: {id: '#service_auxiliar' }%>
+
+    <%= f.hidden_field :auxiliar, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :cost_centre_id %>
+    <%= f.label :cost_centre_id, 'Centro de costos' %>
     <%= f.text_field :cost_centre_id, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :taxable_income %>
+    <%= f.label :taxable_income, 'Entrada gravable' %>
     <%= f.number_field :taxable_income, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :account_IVA_id %>
+    <%= f.label :account_IVA_id, 'Cuenta IVA' %>
     <%= f.text_field :account_IVA_id, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :account_withholding_tax_id %>
+    <%= f.label :account_withholding_tax_id, 'Cuenta retención en la fuente' %>
     <%= f.text_field :account_withholding_tax_id, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :account_withholding_tax_ICA_id %>
+    <%= f.label :account_withholding_tax_ICA_id, 'Cuenta retención en la fuente ICA' %>
     <%= f.text_field :account_withholding_tax_ICA_id, class: 'form-control' %>
   </div>
 

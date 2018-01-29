@@ -2,7 +2,7 @@
 
 <p>
   <strong>Subaccount:</strong>
-  <%= @auxiliar.subaccount %>
+  <%= @auxiliar.subaccount.name %>
 </p>
 
 <p>
@@ -16,4 +16,4 @@
 </p>
 
 <%= link_to 'Edit', edit_auxiliar_path(@auxiliar) %> |
-<%= link_to 'Back', auxiliars_path %>
+<%= link_to 'Back', subaccount_path(@auxiliar.subaccount) %>

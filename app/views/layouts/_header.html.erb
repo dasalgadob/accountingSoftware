@@ -21,6 +21,25 @@
           <li class="active"><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/help">Help</a></li>
+
+          <% if logged_in? %>
+              <li class="dropdown">
+                <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Account
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">Perfil</a></li>
+                  <li><a href="#">Configuración</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li>
+                    <%= link_to "Log out", logout_path, method: :delete %>
+                  </li>
+                </ul>
+              </li>
+          <% else %>
+              <li><a href="/login">Login</a></li>
+          <% end %>
         </ul>
       </div><!--/.collapse-content -->
 

@@ -55,6 +55,13 @@
     <%= f.label :email %>
     <%= f.email_field :email, class: 'form-control' %>
   </div>
+
+    <div class="input-group col-sm-6">
+      <label>
+      <%= f.check_box :is_withholding_agent, class: 'form-check' %>
+      Es agente retenedor</label>
+    </div>
+
   </div>
 
 
@@ -98,6 +105,8 @@
   <%= render 'locations/index', person: person %>
   <br>
   <%= render 'phone_numbers/index', person: person %>
+  <br>
+  <%= render 'withholding_tax_locations/index', person: person %>
   <br>
   <%end %>
   <br>

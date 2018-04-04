@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get    '/login',   to: 'session#new'
   post   '/login',   to: 'session#create'
   delete '/logout',  to: 'session#destroy'
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
   resources :invoice_services
   resources :invoices
   resources :services do
-    get :autocomplete_auxiliar_number, on: :collection
+    get :autocomplete_auxiliar_number_text,:on => :collection
   end
   resources :cost_centres
   resources :people do
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
       get :autocomplete_city_name, :on => :collection
     end
     resources :phone_numbers
+    resources :withholding_tax_locations
   end
   resources :document_types
   resources :countries do

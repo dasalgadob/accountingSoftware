@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171219194319) do
+ActiveRecord::Schema.define(version: 20180319194829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20171219194319) do
     t.string   "name"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "number_text"
     t.index ["subaccount_id"], name: "index_auxiliars_on_subaccount_id", using: :btree
   end
 
@@ -122,8 +123,9 @@ ActiveRecord::Schema.define(version: 20171219194319) do
     t.string   "second_surname"
     t.string   "business_name"
     t.string   "email"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.boolean  "is_withholding_agent"
     t.index ["document_type_id"], name: "index_people_on_document_type_id", using: :btree
   end
 
@@ -180,6 +182,15 @@ ActiveRecord::Schema.define(version: 20171219194319) do
     t.index ["person_id"], name: "index_users_on_person_id", using: :btree
   end
 
+  create_table "withholding_tax_locations", force: :cascade do |t|
+    t.integer  "city_id"
+    t.integer  "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_withholding_tax_locations_on_city_id", using: :btree
+    t.index ["person_id"], name: "index_withholding_tax_locations_on_person_id", using: :btree
+  end
+
   add_foreign_key "accounts", "grupos"
   add_foreign_key "auxiliars", "subaccounts"
   add_foreign_key "cities", "states"
@@ -199,4 +210,6 @@ ActiveRecord::Schema.define(version: 20171219194319) do
   add_foreign_key "states", "countries"
   add_foreign_key "subaccounts", "accounts"
   add_foreign_key "users", "people"
+  add_foreign_key "withholding_tax_locations", "cities"
+  add_foreign_key "withholding_tax_locations", "people"
 end

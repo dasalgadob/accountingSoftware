@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>City:</strong>
+  <%= @withholding_tax_location.city %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @withholding_tax_location.person %>
+</p>
+
+<%= link_to 'Edit', edit_withholding_tax_location_path(@withholding_tax_location) %> |
+<%= link_to 'Back', withholding_tax_locations_path %>

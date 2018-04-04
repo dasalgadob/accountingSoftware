@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Withholding Tax Locations</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Person</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @withholding_tax_locations.each do |withholding_tax_location| %>
+      <tr>
+        <td><%= withholding_tax_location.city %></td>
+        <td><%= withholding_tax_location.person %></td>
+        <td><%= link_to 'Show', withholding_tax_location %></td>
+        <td><%= link_to 'Edit', edit_withholding_tax_location_path(withholding_tax_location) %></td>
+        <td><%= link_to 'Destroy', withholding_tax_location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Withholding Tax Location', new_person_withholding_tax_location_path(person) %>

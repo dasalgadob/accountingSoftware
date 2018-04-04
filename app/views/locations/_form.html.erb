@@ -16,6 +16,11 @@
     <%= autocomplete_field_tag 'city', '', autocomplete_city_name_person_locations_path(@person),class: 'form-control' %>
 
   </div>
+    <div class="form-group col-sm-6" >
+      <%= label_tag 'Ciudad', 'Ciudad', for: 'id_city' %>
+      <%= autocomplete_field_tag 'city', '', people_autocomplete_city_name_path,class: 'form-control' , update_elements: {id: '#id_city'}%>
+      <%= hidden_field_tag 'id_city' %>
+    </div>
 
   <div class="form-group">
     <%= f.label :address %>

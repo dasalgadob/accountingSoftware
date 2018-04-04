@@ -1,0 +1,1 @@
+json.partial! "withholding_tax_locations/withholding_tax_location", withholding_tax_location: @withholding_tax_location

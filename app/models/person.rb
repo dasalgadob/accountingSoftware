@@ -3,7 +3,7 @@ class Person < ApplicationRecord
   before_save :uppercase_fields
   has_many :phone_numbers, dependent: :delete_all
   has_many :locations, dependent: :delete_all
-
+  has_many :withholding_tax_locations
 
   private
   def uppercase_fields

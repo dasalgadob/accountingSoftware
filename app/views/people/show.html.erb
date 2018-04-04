@@ -45,5 +45,11 @@
   <%= @person.email %>
 </p>
 
+
+<p>
+  <strong>Es agente retenedor:</strong>
+  <%= @person.is_withholding_agent ? "Si" : "No"  %>
+</p>
+
 <%= link_to 'Editar', edit_person_path(@person) %> |
 <%= link_to 'Volver', people_path %>

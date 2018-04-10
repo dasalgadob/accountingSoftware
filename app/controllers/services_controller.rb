@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  autocomplete :auxiliar, :number_text, extra_data: [:id]
+  autocomplete :auxiliar, :number_text, display_value: :value_autocomplete, extra_data: [:id, :name]
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   # GET /services

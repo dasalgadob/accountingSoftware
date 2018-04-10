@@ -21,7 +21,8 @@
 
     <%= autocomplete_field_tag 'auxiliar_number_text',
                                '', autocomplete_auxiliar_number_text_services_path,
-                               class: 'form-control', update_elements: {id: "#service_auxiliar_id"} %>
+                               class: 'form-control', update_elements: {id: "#service_auxiliar_id"},
+                               value:  @service.auxiliar != nil ? @service.auxiliar.number : "" %>
 
     <%= f.hidden_field :auxiliar_id, class: 'form-control' %>
   </div>
@@ -40,7 +41,8 @@
     <%= f.label :account_IVA_id, 'Cuenta IVA' %>
     <%= autocomplete_field_tag 'auxiliar_account_IVA',
                                '', autocomplete_auxiliar_number_text_services_path,
-                               class: 'form-control', update_elements: {id: "#service_account_IVA_id"} %>
+                               class: 'form-control', update_elements: {id: "#service_account_IVA_id"},
+                               value:  @service.account_IVA != nil ? @service.account_IVA.number : "" %>
 
     <%= f.hidden_field :account_IVA_id%>
   </div>
@@ -49,7 +51,8 @@
     <%= f.label :account_withholding_tax_id, 'Cuenta retención en la fuente' %>
     <%= autocomplete_field_tag 'auxiliar_account_withholding_tax_id',
                                '', autocomplete_auxiliar_number_text_services_path,
-                               class: 'form-control', update_elements: {id: "#service_account_withholding_tax_id"} %>
+                               class: 'form-control', update_elements: {id: "#service_account_withholding_tax_id"},
+                               value:  @service.account_withholding_tax != nil ? @service.account_withholding_tax.number : ""%>
     <%= f.hidden_field :account_withholding_tax_id %>
   </div>
 
@@ -57,7 +60,8 @@
     <%= f.label :account_withholding_tax_ICA_id, 'Cuenta retención en la fuente ICA' %>
     <%= autocomplete_field_tag 'auxiliar_account_withholding_tax_ICA_id',
                                '', autocomplete_auxiliar_number_text_services_path,
-                               class: 'form-control', update_elements: {id: "#service_account_withholding_tax_ICA_id"} %>
+                               class: 'form-control', update_elements: {id: "#service_account_withholding_tax_ICA_id"},
+                               value:  @service.account_withholding_tax_ICA != nil ? @service.account_withholding_tax_ICA.number : ""%>
     <%= f.hidden_field :account_withholding_tax_ICA_id %>
   </div>
 

@@ -7,8 +7,7 @@ class SessionController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       # Log the user in and redirect to the user's show page.
       log_in(user)
-      remember(user) #helper to make remember user after closing window possible through cookies
-
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to "/menu"
     else
       # Create an error message.

@@ -27,6 +27,7 @@ module SessionHelper
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
   end
+
   def logged_in?
     !current_user.nil?
   end

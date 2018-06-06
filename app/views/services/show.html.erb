@@ -12,7 +12,7 @@
 
 <p>
   <strong>Cost centre:</strong>
-  <%= @service.cost_centre %>
+  <%= @service.cost_centre.name %>
 </p>
 
 <p>
@@ -22,17 +22,17 @@
 
 <p>
   <strong>Account iva:</strong>
-  <%= @service.account_IVA %>
+  <%= @service.account_IVA.number %>
 </p>
 
 <p>
   <strong>Account withholding tax:</strong>
-  <%= @service.account_withholding_tax %>
+  <%= @service.account_withholding_tax.number %>
 </p>
 
 <p>
   <strong>Account withholding tax ica:</strong>
-  <%= @service.account_withholding_tax_ICA %>
+  <%= @service.account_withholding_tax_ICA.number %>
 </p>
 
 <%= link_to 'Edit', edit_service_path(@service) %> |

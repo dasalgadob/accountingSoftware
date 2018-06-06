@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  autocomplete :auxiliar, :number, :case_sensitive => true
+  autocomplete :auxiliar, :number_text, display_value: :value_autocomplete, extra_data: [:id, :name]
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   # GET /services
@@ -70,6 +70,6 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:name, :account_auxiliar_id, :cost_centre_id, :taxable_income, :account_IVA_id, :account_withholding_tax_id, :account_withholding_tax_ICA_id)
+      params.require(:service).permit(:name, :auxiliar_id, :cost_centre_id, :taxable_income, :account_IVA_id, :account_withholding_tax_id, :account_withholding_tax_ICA_id)
     end
 end

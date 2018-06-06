@@ -86,3 +86,17 @@ li.ui-menu-item {list-style-type: none;}
   color: brown;
 }
 
+.checkbox {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+

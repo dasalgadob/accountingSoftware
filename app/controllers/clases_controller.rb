@@ -5,6 +5,15 @@ class ClasesController < ApplicationController
   # GET /clases.json
   def index
     @clases = Clase.all
+    respond_to do | format |
+      format.html
+      format.xlsx
+    end
+  end
+
+  def import
+    Clase.import(params[:file])
+    redirect_to clases_path, notice:  "Clases imported"
   end
 
   # GET /clases/1

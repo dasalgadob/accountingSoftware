@@ -1,0 +1,27 @@
+<%= form_for([@person, @withholding_tax_location]) do |f| %>
+  <% if withholding_tax_location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(withholding_tax_location.errors.count, "error") %> prohibited this withholding_tax_location from being saved:</h2>
+
+      <ul>
+      <% withholding_tax_location.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :city_id %>
+    <%= f.text_field :city_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :person_id %>
+    <%= f.text_field :person_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

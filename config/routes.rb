@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get    '/login',   to: 'session#new'
   post   '/login',   to: 'session#create'
   delete '/logout',  to: 'session#destroy'
@@ -8,14 +9,18 @@ Rails.application.routes.draw do
   resources :invoice_services
   resources :invoices
   resources :services do
-    get :autocomplete_auxiliar_number, on: :collection
+    get :autocomplete_auxiliar_number_text,:on => :collection
   end
-  resources :cost_centres
+  resources :cost_centres do
+    collection {post :import}
+  end
+
   resources :people do
     resources :locations do
       get :autocomplete_city_name, :on => :collection
     end
     resources :phone_numbers
+    resources :withholding_tax_locations
   end
   resources :document_types
   resources :countries do
@@ -31,11 +36,12 @@ Rails.application.routes.draw do
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
   get '/contact',  to: 'static_pages#contact'
-
+  get '/settings', to: 'static_pages#settings'
   get '/menu', to: 'static_pages#menu'
 
   ##The shallow nesting allows to avoid complex urls in the app
   resources :clases do
+    collection {post :import}
     resources :grupos, shallow: true do
       resources :accounts, shallow: true do
         resources :subaccounts, shallow: true do

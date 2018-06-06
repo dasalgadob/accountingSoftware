@@ -20,12 +20,12 @@
     <% @services.each do |service| %>
       <tr>
         <td><%= service.name %></td>
-        <td><%= service.account_auxiliar %></td>
-        <td><%= service.cost_centre %></td>
+        <td><%= service.auxiliar.number %></td>
+        <td><%= service.cost_centre.name %></td>
         <td><%= service.taxable_income %></td>
-        <td><%= service.account_IVA %></td>
-        <td><%= service.account_withholding_tax %></td>
-        <td><%= service.account_withholding_tax_ICA %></td>
+        <td><%= service.account_IVA.number %></td>
+        <td><%= service.account_withholding_tax.number %></td>
+        <td><%= service.account_withholding_tax_ICA.number %></td>
         <td><%= link_to 'Show', service %></td>
         <td><%= link_to 'Edit', edit_service_path(service) %></td>
         <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>

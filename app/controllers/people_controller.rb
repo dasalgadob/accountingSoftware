@@ -25,6 +25,7 @@ class PeopleController < ApplicationController
     @document_types = DocumentType.all
     @locations = @person.locations
     @phone_numbers = @person.phone_numbers
+    @withholding_tax_locations = @person.withholding_tax_locations
   end
 
   # POST /people
@@ -89,7 +90,7 @@ class PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:document_type_id, :document_number, :verification_digit, :first_name, :middle_name, :surname, :second_surname, :business_name, :email)
+      params.require(:person).permit(:document_type_id, :document_number, :verification_digit, :first_name, :middle_name, :surname, :second_surname, :business_name, :email, :is_withholding_agent)
     end
 
 end

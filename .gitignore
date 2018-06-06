@@ -16,3 +16,6 @@
 # Ignore Byebug command history file.
 .byebug_history
 !/app/assets/images/rails.png
+
+#ignore variables from entorn to avoid be seen in the github repository
+/config/local_env.yml

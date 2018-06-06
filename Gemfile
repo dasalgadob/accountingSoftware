@@ -64,4 +64,3 @@ gem "font-awesome-rails"
 gem 'axlsx'
 gem 'axlsx_rails'
 gem 'spreadsheet'
-gem 'nokogiri', '>= 1.8.2'

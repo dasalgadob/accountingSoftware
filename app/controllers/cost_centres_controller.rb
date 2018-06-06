@@ -5,6 +5,15 @@ class CostCentresController < ApplicationController
   # GET /cost_centres.json
   def index
     @cost_centres = CostCentre.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @cost_centres.to_csv(CostCentre.column_names)}
+    end
+  end
+
+  def import
+    CostCentre.import(params[:file])
+    redirect_to cost_centres_path, notice:  "Cost centres imported"
   end
 
   # GET /cost_centres/1

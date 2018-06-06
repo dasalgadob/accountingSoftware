@@ -30,8 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
-
+gem 'bcrypt', '~> 3.1.11'
+#gem 'bcrypt', platforms: :ruby
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -61,3 +61,6 @@ gem 'jquery-ui-rails'
 gem 'rails-jquery-autocomplete'
 
 gem "font-awesome-rails"
+gem 'axlsx'
+gem 'axlsx_rails'
+gem 'spreadsheet'

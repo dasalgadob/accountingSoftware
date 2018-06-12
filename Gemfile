@@ -39,6 +39,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'factory_bot_rails'
+  gem 'spring'
 end
 
 group :development do
@@ -61,6 +62,7 @@ gem 'jquery-ui-rails'
 gem 'rails-jquery-autocomplete'
 
 gem "font-awesome-rails"
-gem 'axlsx'
-gem 'axlsx_rails'
-gem 'spreadsheet'
+#gem 'axlsx'
+#gem 'axlsx_rails'
+#gem 'spreadsheet'
+gem "roo", "~> 2.7.1"

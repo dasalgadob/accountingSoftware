@@ -48,3 +48,14 @@ CSV.foreach('db/csv/Cities.csv', col_sep: ';') {
   next if state == nil
   City.create(code: row[0].to_s.to_i, name: row[1], state_id: state.id)
 }
+
+
+xlsx = Roo::Excelx.new('test/xlsx/Contabilidad JED ok.xlsx')
+    #puts xlsx.info
+    hoja = xlsx.sheet('PUC')
+    hoja.header_line= 2
+    hoja.each(clase: 'CLASE', grupo: 'GRUPO', 
+    cuenta: 'CUENTA', subcuenta: "SUB CUENTA", auxiliar: "AUXILIAR") do |hash|
+      puts hash.inspect
+      # => { id: 1, name: 'John Smith' }
+    end

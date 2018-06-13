@@ -9,7 +9,7 @@ include FactoryBot::Syntax::Methods
 
 require 'csv'
 
-#create(:country, code: 890, name: 'ZAMBIA')
+#create(:country, number: 890, name: 'ZAMBIA')
 =begin
 CSV.foreach(
     "db/csv/Libro1.csv",
@@ -49,13 +49,55 @@ CSV.foreach('db/csv/Cities.csv', col_sep: ';') {
   City.create(code: row[0].to_s.to_i, name: row[1], state_id: state.id)
 }
 
-
-xlsx = Roo::Excelx.new('test/xlsx/Contabilidad JED ok.xlsx')
+#f = File.open('test/xlsx/PUCTest10.xlsx', "r")
+xlsx = Roo::Excelx.new('test/xlsx/PUCTest.xlsx')
     #puts xlsx.info
-    hoja = xlsx.sheet('PUC')
-    hoja.header_line= 2
-    hoja.each(clase: 'CLASE', grupo: 'GRUPO', 
-    cuenta: 'CUENTA', subcuenta: "SUB CUENTA", auxiliar: "AUXILIAR") do |hash|
-      puts hash.inspect
-      # => { id: 1, name: 'John Smith' }
+hoja = xlsx.sheet('PUC')
+hoja.each( grupo: 'GRUPO', clase: 'CLASE',cuenta: 'CUENTA', subcuenta: 'SUB CUENTA', auxiliar: 'AUXILIAR', denominacion: "NOMBRE O DENOMINACION") do |hash|
+  if hash[:clase] == "CLASE" || hash[:grupo] == "GRUPO"
+    next
+  end
+  #puts hash[:clase].to_s + " g" + hash[:grupo].to_s + " c" + hash[:cuenta].to_s +  " d" + hash[:denominacion].to_s
+
+  if hash[:clase] != nil && hash[:clase] != ""
+    Clase.create(number: hash[:clase], name: hash[:denominacion])
+  elsif   hash[:grupo] != nil && hash[:clase] != ""
+    ##Comprueba si es entero y evita exception en caso de que no lo sea
+    numero =Integer(hash[:grupo]) rescue nil
+    ##Se chequea que los datos ingresados no sean texto
+    if numero != nil
+      c= Clase.find_by_number(numero/10)
+      ## Se chequea que tiene un padre con ese valor
+      if c != nil
+        Grupo.create(number: hash[:grupo], name: hash[:denominacion], clase_id: c.id)
+      end    
+    end 
+  elsif hash[:cuenta] != nil && hash[:cuenta] != ""
+    numero =Integer(hash[:cuenta]) rescue nil
+    if numero != nil
+      g= Grupo.find_by_number(numero/100)
+      if g != nil
+        Account.create(number: hash[:cuenta], name: hash[:denominacion], grupo_id: g.id)
+      end
+    end  
+  elsif hash[:subcuenta] != nil && hash[:subcuenta] != ""
+    numero =Integer(hash[:subcuenta]) rescue nil
+    if numero != nil
+      a= Account.find_by_number(numero/100)
+      if a != nil
+        Subaccount.create(number: hash[:subcuenta], name: hash[:denominacion],account_id: a.id)
+      end  
     end
+  elsif hash[:auxiliar] != nil && hash[:auxiliar] != ""
+    numero =Integer(hash[:auxiliar]) rescue nil
+    if numero != nil
+      s= Subaccount.find_by_number(hash[:auxiliar].to_s[0,6])
+      if s!= nil
+        Auxiliar.create(number: hash[:auxiliar], name: hash[:denominacion], subaccount_id: s.id)
+      end
+    end
+
+  end
+
+end
+#f.close

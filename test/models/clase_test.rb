@@ -5,7 +5,7 @@ class ClaseTest < ActiveSupport::TestCase
   #   assert true
   # end
   test  "Funcion import de clase que reciba datos de excel" do
-    f = File.open('test/xlsx/Contabilidad JED ok.xlsx', "r")
+    f = File.open('test/xlsx/PUCTest.xlsx', "r")
     Clase.import(f)
     f.close
   end

@@ -5,9 +5,15 @@ class Clase < ApplicationRecord
   def self.import(file)
     xlsx = Roo::Excelx.new(file.path())
     #puts xlsx.info
-    hoja = xlsx.sheet('REGISTROS')
-    hoja.each(id: 'LLAVE', doc: 'DOC', cuenta: 'CUENTA') do |hash|
-      #puts hash.inspect
+    hoja = xlsx.sheet('PUC')
+    hoja.each(clase: 'CLASE', grupo: 'GRUPO',  cuenta: 'CUENTA', denominacion: "NOMBRE O DENOMINACION") do |hash|
+      puts hash.inspect
+      numero =Integer(clase) rescue nil
+      if hash.clase!= nil &&  numero != nil
+        puts hash.inspect
+        #Clase.create(number: hash.clase, name: hash.denominacion)
+      #elsif grupo != nil   
+      end
       # => { id: 1, name: 'John Smith' }
     end
   end

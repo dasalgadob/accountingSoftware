@@ -1,6 +1,7 @@
 class Auxiliar < ApplicationRecord
   belongs_to :subaccount
   has_many :services
+  validates :number, uniqueness: true
 
   before_save do
     self.number_text = self.number.to_s

@@ -4,7 +4,7 @@ class Person < ApplicationRecord
   has_many :phone_numbers, dependent: :delete_all
   has_many :locations, dependent: :delete_all
   has_many :withholding_tax_locations
-
+  validates :document_number, uniqueness: { scope: [:document_type] }
   private
   def uppercase_fields
     first_name.upcase!

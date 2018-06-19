@@ -23,3 +23,5 @@
 /config/database.yml
 
 /vendor/bundle/*
+#Ignore files that are generated to run the app
+/public/assets/*

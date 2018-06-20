@@ -31,8 +31,8 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create
-    puts ('LOG: ' +params[:city])
-    puts ('LOG: ' +params[:address])
+    #puts ('LOG: ' +params[:city])
+    #puts ('LOG: ' +params[:address])
     @person = Person.new(person_params)
 
 

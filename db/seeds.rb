@@ -100,4 +100,17 @@ hoja.each( grupo: 'GRUPO', clase: 'CLASE',cuenta: 'CUENTA', subcuenta: 'SUB CUEN
   end
 
 end
+
+#Seeds para los tipos de documento
+DocumentType.create(abbreviation: "RC", name: "Registro civil de nacimiento", code: 11)
+DocumentType.create(abbreviation: "TI", name: "Tarjeta de Identidad", code: 12)
+DocumentType.create(abbreviation: "CC", name: "Cédula de ciudadanía", code: 13)
+DocumentType.create(abbreviation: "CE", name: "Cédula de extranjería", code: 22)
+DocumentType.create(abbreviation: "NIT", name: "NIT", code: 31)
+DocumentType.create(abbreviation: "PP", name: "Pasaporte", code: 41)
+
+
+docT = DocumentType.find_by_code(13)
+#crear usuario de administracion
+Person.create(document_type_id: docT.id, document_number: 123456)
 #f.close

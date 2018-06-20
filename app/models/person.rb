@@ -7,10 +7,20 @@ class Person < ApplicationRecord
   validates :document_number, uniqueness: { scope: [:document_type] }
   private
   def uppercase_fields
-    first_name.upcase!
-    middle_name.upcase!
-    surname.upcase!
-    second_surname.upcase!
-    business_name.upcase!
+    if first_name != nil
+      first_name.upcase!
+    end
+    if middle_name != nil
+      middle_name.upcase!
+    end
+    if surname != nil
+      surname.upcase!
+    end
+    if second_surname != nil
+      second_surname.upcase!
+    end
+    if   business_name != nil
+      business_name.upcase!
+    end
   end
 end

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
-    username "MyString"
+    username "test1"
     password_digest "MyString"
-    person nil
+    person create(:person)
   end
 end

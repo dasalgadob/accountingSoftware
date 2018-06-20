@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :document_type do
-    abbreviation "MyString"
-    name "MyString"
+    abbreviation "CC"
+    name "Cedula de ciudadania"
+    code 23
   end
 end

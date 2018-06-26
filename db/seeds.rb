@@ -112,5 +112,7 @@ DocumentType.create(abbreviation: "PP", name: "Pasaporte", code: 41)
 
 docT = DocumentType.find_by_code(13)
 #crear usuario de administracion
-Person.create(document_type_id: docT.id, document_number: 123456, first_name: "admin")
+p= Person.create(document_type_id: docT.id, document_number: 123456, first_name: "admin")
+
+User.create(username: "admin", password: "123456", password_confirmation:"123456", person_id:p.id)
 #f.close

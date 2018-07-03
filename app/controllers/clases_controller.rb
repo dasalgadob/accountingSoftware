@@ -7,7 +7,7 @@ class ClasesController < ApplicationController
     @clases = Clase.all
     respond_to do | format |
       format.html
-      format.xlsx
+      #format.xlsx
     end
   end
 

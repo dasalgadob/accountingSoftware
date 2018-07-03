@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= render 'layouts/breadcrumb', titles: [['Menu',menu_path]]%>
 <h1>Welcome!</h1>
 <%= form_for '' do |f| %>
 <%= f.autocomplete_field :country_name, autocomplete_country_name_countries_path, update_elements: {id: '#id_element', created_at: '#some_other_element', code: '#code'},

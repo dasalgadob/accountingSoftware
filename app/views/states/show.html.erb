@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= render 'layouts/breadcrumb', titles: [['Menu',menu_path], ['Countries',countries_path],[@state.country.name,country_path(@state.country)]]%>
 <p>
   <strong>Country:</strong>
   <%= @state.country.name %>

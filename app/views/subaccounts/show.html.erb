@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= render 'layouts/breadcrumb', titles: [['Menu',menu_path], ['Clases',clases_path],[@subaccount.account.grupo.clase.number,clase_path(@subaccount.account.grupo.clase)],['Grupo ' + @subaccount.account.grupo.number.to_s,grupo_path(@subaccount.account.grupo)],['Cuenta ' + @subaccount.account.number.to_s,account_path(@subaccount.account)]]%>
 <p>
   <strong>Account:</strong>
   <%= @subaccount.account.name %>

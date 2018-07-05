@@ -1,5 +1,5 @@
-<header>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+<header id="header">
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="nav-bar">
     <div class="container-fluid">
 
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -11,16 +11,16 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">
-          Brand
+          <img src="assets/accounting.png" id="header-img">
         </a>
       </div> <!-- End of nav-header -->
 
       <!--content to be toggled-->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/help">Help</a></li>
+          <li class="active"><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/about" class="nav-link">About</a></li>
+          <li><a href="/help" class="nav-link">Help</a></li>
 
           <% if logged_in? %>
               <li class="dropdown">
@@ -38,7 +38,7 @@
                 </ul>
               </li>
           <% else %>
-              <li><a href="/login">Login</a></li>
+              <li><a href="/login" class="nav-link">Login</a></li>
           <% end %>
         </ul>
       </div><!--/.collapse-content -->

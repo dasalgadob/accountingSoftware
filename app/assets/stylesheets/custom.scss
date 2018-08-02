@@ -158,5 +158,10 @@ iframe {
   margin: auto;
 }
 
+div .pagination {
+  display: flex;
+  justify-content: center;
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";

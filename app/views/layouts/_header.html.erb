@@ -18,9 +18,10 @@
       <!--content to be toggled-->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="/" class="nav-link">Home</a></li>
-          <li><a href="/about" class="nav-link">About</a></li>
-          <li><a href="/help" class="nav-link">Help</a></li>
+        <% logger.debug "#{home_path} path #{request.env['PATH_INFO']}"%>
+          <li class=" <%= current_page?(home_path) || current_page?("/")? "active"  : "" %>"><a href="/" class="nav-link">Home</a></li>
+          <li class=" <%= current_page?(about_path) ? "active"  : "" %>"><a href="/about" class="nav-link">About</a></li>
+          <li class=" <%= current_page?(help_path) ? "active"  : "" %>"><a href="/help" class="nav-link">Help</a></li>
 
           <% if logged_in? %>
               <li class="dropdown">
@@ -38,7 +39,7 @@
                 </ul>
               </li>
           <% else %>
-              <li><a href="/login" class="nav-link">Login</a></li>
+              <li class=" <%= current_page?(login_path) ? "active"  : "" %>"><a href="/login" class="nav-link">Login</a></li>
           <% end %>
         </ul>
       </div><!--/.collapse-content -->

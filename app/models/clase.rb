@@ -1,6 +1,7 @@
 class Clase < ApplicationRecord
   has_many :grupos, :dependent => :delete_all
-  validates :number, uniqueness: true
+  validates :number, presence: true, uniqueness: true
+  validates :name, presence: true
 
   def self.import(file)
     xlsx = Roo::Excelx.new(file.path())

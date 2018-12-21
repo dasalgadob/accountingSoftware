@@ -7,7 +7,7 @@ class ClasesController < ApplicationController
     @clases = Clase.all
     respond_to do | format |
       format.html
-      #format.xlsx
+      format.xlsx
     end
   end
 
@@ -38,7 +38,7 @@ class ClasesController < ApplicationController
 
     respond_to do |format|
       if @clase.save
-        
+
         format.html { redirect_to @clase, flash: {success:  "Clase #{@clase.name} fue creada exitosamente."  } }
         format.json { render :show, status: :created, location: @clase }
       else

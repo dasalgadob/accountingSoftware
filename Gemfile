@@ -51,7 +51,7 @@ end
 
 group :test do
   gem 'rails-controller-testing'
-end  
+end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -72,3 +72,6 @@ gem "font-awesome-rails"
 #gem 'axlsx_rails'
 #gem 'spreadsheet'
 gem "roo", "~> 2.7.1"
+
+#Gem for serialization to be able to use the objets through an API
+gem 'fast_jsonapi'
